@@ -3,6 +3,7 @@ package me.collebol.deathswapplugin.commands;
 import me.collebol.deathswapplugin.DeathSwapPlugin;
 import me.collebol.deathswapplugin.gamedingen.PlayerList;
 import me.collebol.deathswapplugin.manage.State;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,6 +18,13 @@ public class JoinCommand implements CommandExecutor {
         Player player = (Player) sender;
         if(gameState == State.QUE){
             PlayerList.playerList.add(player.getUniqueId());
+
+            for(Player p : Bukkit.getOnlinePlayers()){
+                if(PlayerList.playerList.contains(p.getUniqueId())){
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', DeathSwapPlugin.prefix +
+                            "&b" + player.getName() + " &fjoined the game! &7[&b" + PlayerList.playerList.size() + "&7]"));
+                }
+            }
 
         }else{
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', DeathSwapPlugin.prefix +

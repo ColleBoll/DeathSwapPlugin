@@ -3,3 +3,8 @@ version: '${project.version}'
 main: me.collebol.deathswapplugin.DeathSwapPlugin
 api-version: 1.19
 authors: [ ColleBol ]
+commands:
+  join:
+    description: join the game!
+  open:
+    description: open the game!
