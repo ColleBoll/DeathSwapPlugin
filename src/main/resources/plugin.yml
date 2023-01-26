@@ -1,0 +1,5 @@
+name: DeathSwapPlugin
+version: '${project.version}'
+main: me.collebol.deathswapplugin.DeathSwapPlugin
+api-version: 1.19
+authors: [ ColleBol ]
