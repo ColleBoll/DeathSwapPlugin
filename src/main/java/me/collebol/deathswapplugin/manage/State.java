@@ -2,6 +2,6 @@ package me.collebol.deathswapplugin.manage;
 
 public enum State {
 
-    INACTIVE, QUE
+    INACTIVE, QUE, ACTIVE, STARTING
 
 }

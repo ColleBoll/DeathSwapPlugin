@@ -8,3 +8,5 @@ commands:
     description: join the game!
   open:
     description: open the game!
+  start:
+    description: start the game!

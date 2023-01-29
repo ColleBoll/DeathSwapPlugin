@@ -10,35 +10,33 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 
-public class JoinCommand implements CommandExecutor {
+public class StartCommand implements CommandExecutor {
 
     private State gameState;
     private Manager gameManager;
 
-    public JoinCommand(Manager gameManager){
+    public StartCommand(Manager gameManager){
         this.gameManager = gameManager;
     }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;
-        if(PlayerList.playerList.size() > 0){
-            if(!PlayerList.playerList.contains(player.getUniqueId())){
-                PlayerList.playerList.add(player.getUniqueId());
-
+        if(player.hasPermission("deathswap.start")){
+            if(PlayerList.playerList.size() > 1){
+                gameManager.setGameState(State.STARTING);
                 for(Player p : Bukkit.getOnlinePlayers()){
                     if(PlayerList.playerList.contains(p.getUniqueId())){
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', DeathSwapPlugin.prefix +
-                                "&b" + player.getName() + " &fjoined the game! &7[&b" + PlayerList.playerList.size() + "&7]"));
+                        player.sendTitle("§cGame is starting!", "§c20 sec!");
                     }
                 }
+
             }else{
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', DeathSwapPlugin.prefix +
-                        "&fyou are already in the game!"));
+                        "&fAt least 2 people must participate in the game!"));
             }
-        }else{
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', DeathSwapPlugin.prefix +
-                    "&fthe game is already in progress! You should wait for the next one!"));
         }
         return false;
     }

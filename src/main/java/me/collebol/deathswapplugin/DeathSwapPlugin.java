@@ -2,6 +2,7 @@ package me.collebol.deathswapplugin;
 
 import me.collebol.deathswapplugin.commands.JoinCommand;
 import me.collebol.deathswapplugin.commands.OpenCommand;
+import me.collebol.deathswapplugin.commands.StartCommand;
 import me.collebol.deathswapplugin.events.EventPlayerLeave;
 import me.collebol.deathswapplugin.gamedingen.PlayerList;
 import me.collebol.deathswapplugin.manage.Manager;
@@ -22,8 +23,9 @@ public final class DeathSwapPlugin extends JavaPlugin {
 
         this.getServer().getPluginManager().registerEvents(new EventPlayerLeave(), this);
 
-        getCommand("join").setExecutor(new JoinCommand());
-        getCommand("open").setExecutor(new OpenCommand());
+        getCommand("join").setExecutor(new JoinCommand(gameManager));
+        getCommand("open").setExecutor(new OpenCommand(gameManager));
+        getCommand("start").setExecutor(new StartCommand(gameManager));
 
         PlayerList.init();
 
