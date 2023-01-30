@@ -10,3 +10,5 @@ commands:
     description: open the game!
   start:
     description: start the game!
+  tpalltospawn:
+    description: tp allemaal naar de lobby!

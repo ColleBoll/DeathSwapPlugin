@@ -2,8 +2,8 @@ package me.collebol.deathswapplugin.commands;
 
 import me.collebol.deathswapplugin.DeathSwapPlugin;
 import me.collebol.deathswapplugin.gamedingen.PlayerList;
-import me.collebol.deathswapplugin.manage.Manager;
-import me.collebol.deathswapplugin.manage.State;
+import me.collebol.deathswapplugin.manage.GameManager;
+import me.collebol.deathswapplugin.manage.GameState;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -13,10 +13,10 @@ import org.bukkit.entity.Player;
 
 public class JoinCommand implements CommandExecutor {
 
-    private State gameState;
-    private Manager gameManager;
+    private GameState gameState;
+    private GameManager gameManager;
 
-    public JoinCommand(Manager gameManager){
+    public JoinCommand(GameManager gameManager){
         this.gameManager = gameManager;
     }
     @Override
